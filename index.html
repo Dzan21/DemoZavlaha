@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irrigation System Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 700;
+            font-size: 20px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        .navbar a:hover {
+            color: #ffcc00;
+        }
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90vh; /* 90% of the screen height */
+            text-align: center;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+        .section .content {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .section h1 {
+            margin-top: 0;
+            font-weight: 500;
+            color: #fff;
+        }
+        .section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+        .section .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 10px;
+        }
+        .section .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#landingPage">Home</a>
+        <a href="#loginSection">Login</a>
+        <a href="#registerSection">Register</a>
+        <a href="#informationSection">Information</a>
+        <a href="#aboutUsSection">About Us</a>
+    </div>
+
+    <div class="section" id="landingPage" style="background-image: url('images/home.jpg');">
+        <div class="content">
+            <h1>Welcome to Our Irrigation System</h1>
+            <p>We provide the best irrigation solutions for your agricultural needs. Join us to manage your irrigation systems efficiently and effectively.</p>
+        </div>
+    </div>
+
+    <div class="section" id="loginSection" style="background-image: url('images/login.jpg');">
+        <div class="content">
+            <h1>Login</h1>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <button class="btn btn-secondary mt-3" onclick="showLandingPage()">Back</button>
+        </div>
+    </div>
+
+    <div class="section" id="registerSection" style="background-image: url('images/register.jpg');">
+        <div class="content">
+            <h1>Register</h1>
+            <form>
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <input type="text" class="form-control" id="regUsername" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" class="form-control" id="regPassword" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+            <button class="btn btn-secondary mt-3" onclick="showLandingPage()">Back</button>
+        </div>
+    </div>
+
+    <div class="section" id="informationSection" style="background-image: url('images/information.jpg');">
+        <div class="content">
+            <h1>Information</h1>
+            <p>Our irrigation system is designed to provide efficient and effective water management solutions for your agricultural needs. With advanced technology and user-friendly interfaces, our system ensures optimal water usage and helps you achieve better crop yields.</p>
+            <button class="btn btn-secondary mt-3" onclick="showLandingPage()">Back</button>
+        </div>
+    </div>
+
+    <div class="section" id="aboutUsSection" style="background-image: url('images/aboutus.jpg');">
+        <div class="content">
+            <h1>About Us</h1>
+            <p>We are a leading provider of irrigation solutions, dedicated to helping farmers and agricultural businesses manage their water resources efficiently. Our team of experts is committed to delivering innovative and sustainable solutions that meet the unique needs of our clients.</p>
+            <button class="btn btn-secondary mt-3" onclick="showLandingPage()">Back</button>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showLandingPage() {
+            document.getElementById('landingPage').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('.navbar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                showSection(targetId);
+            });
+        });
+
+        document.getElementById('loginSection').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:3000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert('Login successful');
+                console.log(data);
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Login failed: ' + data.message);
+            }
+        });
+
+        document.getElementById('registerSection').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+
+            const response = await fetch('http://localhost:3000/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert('Registration successful');
+                console.log(data);
+            } else {
+                alert('Registration failed: ' + data.message);
+            }
+        });
+    </script>
+</body>
+</html>

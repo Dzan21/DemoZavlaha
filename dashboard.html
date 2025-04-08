@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Irrigation System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="water-consumption.html">Water Consumption</a>
+            <a href="irrigation-times.html">Irrigation Times</a>
+        </div>
+        <div class="profile-icon" onclick="toggleProfileDropdown()">
+            <img src="images/profile-icon.png" alt="Profile" width="40" height="40">
+            <div class="profile-dropdown">
+                <a href="profile.html">Profile</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+        <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <!-- Current Weather Card -->
+            <div class="card weather-card">
+                <h2>Current Weather</h2>
+                <div id="weather-widget">
+                    <img id="weather-icon" src="" alt="Weather Icon">
+                    <div class="weather-info">
+                        <h3 id="weather-temp">--°C</h3>
+                        <p id="weather-desc">Loading...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Other Cards -->
+            <div class="card">
+                <h2>Total Irrigation Today</h2>
+                <p id="totalIrrigationToday">0 liters</p>
+            </div>
+            <div class="card">
+                <h2>Weekly & Monthly Irrigation</h2>
+                <div class="chart-container">
+                    <canvas id="irrigationChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Average Irrigation per Cycle</h2>
+                <p id="averageIrrigation">0 liters</p>
+            </div>
+            <div class="card">
+                <h2>Historical Irrigation Trends</h2>
+                <div class="chart-container">
+                    <canvas id="historicalIrrigationChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Automated Irrigation</h2>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="automationToggle" onclick="toggleAutomation()">
+                    <span class="slider"></span>
+                </label>
+                <p id="automationStatus">Automation is OFF</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
